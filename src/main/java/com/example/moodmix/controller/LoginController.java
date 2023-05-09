@@ -3,10 +3,7 @@ package com.example.moodmix.controller;
 import com.example.moodmix.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -21,8 +18,19 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping("/check")
-    public List<Object> getAllExample (){
-        List<Object> result = loginService.checkLogin();
+    public Map<String, Object> checkLogin(@RequestBody Map<String, Object> param) {
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        Map<String, Object> result = loginService.checkLogin(dataParam);
+
+        if (result != null) {
+            // 로그인 성공
+            result.put("success", true);
+        } else {
+            // 로그인 실패
+           result = new HashMap<>();
+            result.put("success", false);
+        }
+
         return result;
     }
 }

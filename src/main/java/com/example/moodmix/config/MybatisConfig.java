@@ -16,7 +16,7 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
 @Configuration // 설정파일을 나타내는 어노테이션
-@MapperScan(basePackages = {"com.exmample.backend.mapper"})
+@MapperScan(basePackages = {"com.example.backend.mapper"})
 public class MybatisConfig {
     @Bean(name = "sqlSessionFactory")
     public SqlSessionFactory sqlSessionFactory(@Qualifier("dataSource") DataSource dataSource) throws Exception {
