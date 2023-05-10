@@ -4,12 +4,12 @@
 <mapper namespace="com.example.moodmix.mapper.SignUpMapper">
 
     <insert id="SignUp" parameterType="map">
-        <if test="userId == null or userPassword == null or userName == null or userBirth == null">
-            <!-- 하나라도 null 값이 있으면 예외를 던짐 / 중복 check -->
+        <!--<if test="userId == null or userPassword == null or userName == null or userBirth == null">
+            &lt;!&ndash; 하나라도 null 값이 있으면 예외를 던짐 / 중복 check &ndash;&gt;
             <![CDATA[
             SELECT 1 / 0 FROM DUAL
-        ]]>
-        </if>
+        ]]>-->
+     <!--   </if>-->
         INSERT INTO users(user_id, user_password, user_name, user_birth)
         SELECT
         #{userId},

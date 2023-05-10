@@ -38,10 +38,12 @@ public class LoginController {
     }
 
     @PostMapping("/signup")
-    public Map<String,Object> checkSignUp(@RequestBody Map<String,Object> param){
+    public int checkSignUp(@RequestBody Map<String,Object> param){
         Map<String,Object> dataParam = (Map<String,Object>) param.get("data");
-        Map<String,Object> result = SignUpService.checkSignUp(dataParam);
+        int result = SignUpService.checkSignUp(dataParam);
         System.out.println(result);
+        //중복일때 0 / 아니면 1
+
         return result; //수정
     }
 }
