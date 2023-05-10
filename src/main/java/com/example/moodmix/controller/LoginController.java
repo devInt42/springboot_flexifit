@@ -1,6 +1,7 @@
 package com.example.moodmix.controller;
 
 import com.example.moodmix.service.LoginService;
+import com.example.moodmix.service.SignUpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,8 @@ public class LoginController {
 
     @Autowired
     private LoginService loginService;
+    @Autowired
+    private SignUpService SignUpService;
 
     @PostMapping("/check")
     public Map<String, Object> checkLogin(@RequestBody Map<String, Object> param) {
@@ -32,5 +35,13 @@ public class LoginController {
         }
 
         return result;
+    }
+
+    @PostMapping("/signup")
+    public Map<String,Object> checkSignUp(@RequestBody Map<String,Object> param){
+        Map<String,Object> dataParam = (Map<String,Object>) param.get("data");
+        Map<String,Object> result = SignUpService.checkSignUp(dataParam);
+        System.out.println(result);
+        return result; //수정
     }
 }
