@@ -38,12 +38,18 @@ public class LoginController {
     }
 
     @PostMapping("/signup")
-    public int checkSignUp(@RequestBody Map<String,Object> param){
+    public int checkSignUp(@RequestBody Map<String,Object> param) {
         Map<String,Object> dataParam = (Map<String,Object>) param.get("data");
-        int result = SignUpService.checkSignUp(dataParam);
-        System.out.println(result);
-        //중복일때 0 / 아니면 1
 
-        return result; //수정
+        // 값이 비어있는지 확인
+        if (dataParam.containsValue(null) || dataParam.containsValue("")) {
+            // 필드값 중 null 값 막음.
+            return -1;
+        }
+
+        int result = SignUpService.checkSignUp(dataParam);
+        System.out.println(result); // 중복체크
+        return result;
     }
+
 }

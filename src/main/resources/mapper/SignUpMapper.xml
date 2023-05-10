@@ -3,13 +3,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.moodmix.mapper.SignUpMapper">
 
+<!--    중복체크 있으면 0 / 없으면 1-->
     <insert id="SignUp" parameterType="map">
-        <!--<if test="userId == null or userPassword == null or userName == null or userBirth == null">
-            &lt;!&ndash; 하나라도 null 값이 있으면 예외를 던짐 / 중복 check &ndash;&gt;
-            <![CDATA[
-            SELECT 1 / 0 FROM DUAL
-        ]]>-->
-     <!--   </if>-->
         INSERT INTO users(user_id, user_password, user_name, user_birth)
         SELECT
         #{userId},
