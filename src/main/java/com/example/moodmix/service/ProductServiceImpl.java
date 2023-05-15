@@ -13,15 +13,16 @@ import java.util.Map;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     private SqlSessionTemplate sqlSession;
-    @Autowired
-    ProductMapper productMapper;
+
 
     @Override
     public APIResult getInfo(Map<String, Object> dataParam) {
         APIResult result = new APIResult();
-        ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
-        List<Map<String, Object>> productList = productMapper.getInfo(dataParam);
+
+
+        List<Map<String, Object>> productList = sqlSession.getMapper(ProductMapper.class).getInfo(dataParam);
         result.setResultData(productList);
+
         return result;
     }
 }
