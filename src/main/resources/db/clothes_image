@@ -1,0 +1,9 @@
+CREATE TABLE `clothes_image` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cloth_id` int(11) NOT NULL,
+  `cloth_color` varchar(50) NOT NULL,
+  `cloth_imageUrl` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cloth_id` (`cloth_id`),
+  CONSTRAINT `clothes_image_ibfk_1` FOREIGN KEY (`cloth_id`) REFERENCES `clothes` (`cloth_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin
