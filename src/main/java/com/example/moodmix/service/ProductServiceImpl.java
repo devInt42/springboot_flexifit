@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public APIResult getInfo(Map<String, Object> dataParam) {
         APIResult result = new APIResult();
-        ProductMapper mapper = sqlSession.getMapper(param);
+        ProductMapper mapper = sqlSession.getMapper(ProductMapper.class);
         List<Map<String, Object>> productList = productMapper.getInfo(dataParam);
         result.setResultData(productList);
         return result;
