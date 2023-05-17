@@ -4,5 +4,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProductMapper {
-    List<Map<String, Object>> getInfo(Map<String, Object> dataParam);
+    List<Map<String, Object>> getInfoByCategory(Map<String, Object> dataParam);
 }

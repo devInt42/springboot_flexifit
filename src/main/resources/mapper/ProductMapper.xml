@@ -3,10 +3,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.moodmix.mapper.ProductMapper">
 
-    <select id="getInfo" resultType="hashMap">
-        SELECT c.cloth_id, c.cloth_name, c.cloth_description, c.cloth_price, c.cloth_size, ci.cloth_imageUrl
-        FROM clothes AS c
-        JOIN clothes_image AS ci ON c.cloth_id = ci.cloth_id
-        WHERE c.cloth_type = #{category}
+    <select id="getInfoByCategory" parameterType="hashMap" resultType="hashMap">
+        SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
+        FROM clothes
+        WHERE cloth_type = #{category}
     </select>
 </mapper>
