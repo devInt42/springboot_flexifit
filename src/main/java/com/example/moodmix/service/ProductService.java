@@ -7,4 +7,5 @@ import java.util.Map;
 
 public interface ProductService {
     APIResult getInfo(Map<String,Object>dataParam);
+    APIResult getAllProducts();
 }

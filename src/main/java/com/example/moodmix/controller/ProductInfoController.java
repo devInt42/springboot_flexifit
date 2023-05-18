@@ -23,13 +23,19 @@ public class ProductInfoController {
 
     @PostMapping("/getProductInfo")
     public APIResult getProductInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
-
         APIResult result = new APIResult();
 
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
-        APIResult res = productService.getInfo(dataParam);
-        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
-        result.setResultData(resData);
+
+        if (dataParam == null || dataParam.isEmpty()) {
+            APIResult res = productService.getAllProducts();
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+        } else {
+            APIResult res = productService.getInfo(dataParam);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+        }
 
         return result;
     }

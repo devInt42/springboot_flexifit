@@ -8,4 +8,9 @@
         FROM clothes
         WHERE cloth_type = #{category}
     </select>
+
+    <select id="getAllProducts" parameterType="hashMap" resultType="hashMap">
+        SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
+        FROM clothes
+    </select>
 </mapper>

@@ -22,4 +22,12 @@ public class ProductServiceImpl implements ProductService {
         result.setResultData(productList);
         return result;
     }
+
+    @Override
+    public APIResult getAllProducts() {
+        APIResult result = new APIResult();
+        List<Map<String, Object>> productList = sqlSession.getMapper(ProductMapper.class).getAllProducts();
+        result.setResultData(productList);
+        return result;
+    }
 }
