@@ -21,7 +21,7 @@ public class ProductInfoController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/shirts")
+    @PostMapping("/getProductInfo")
     public APIResult getProductInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
 
         APIResult result = new APIResult();
