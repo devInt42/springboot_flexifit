@@ -18,25 +18,6 @@ public class ProductInfoController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/getProductInfo")
-    public APIResult getProductInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
-        APIResult result = new APIResult();
-
-        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
-
-        if (dataParam == null || dataParam.isEmpty()) {
-            APIResult res = productService.getAllProducts();
-            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
-            result.setResultData(resData);
-        } else {
-            APIResult res = productService.getInfo(dataParam);
-            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
-            result.setResultData(resData);
-        }
-
-        return result;
-    }
-
     @GetMapping("/count")
     public int getCount(@RequestParam(value= "category", required = false) String category) {
         int count;
@@ -55,10 +36,15 @@ public class ProductInfoController {
 
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
 
+        if (dataParam == null || dataParam.isEmpty() || dataParam.get("category").equals("all")) {
+            APIResult res = productService.getAllProducts(dataParam);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+        }else {
             APIResult res = productService.getProductBySort(dataParam);
             List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
             result.setResultData(resData);
-
+        }
         return result;
     }
 }

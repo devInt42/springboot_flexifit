@@ -3,15 +3,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.moodmix.mapper.ProductMapper">
 
-    <select id="getInfoByCategory" parameterType="hashMap" resultType="hashMap">
-        SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
-        FROM clothes
-        WHERE cloth_type = #{category}
-    </select>
-
     <select id="getAllProducts" parameterType="hashMap" resultType="hashMap">
         SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
         FROM clothes
+        <choose>
+            <when test="option == 1">
+            </when>
+            <when test="option == 2">
+                ORDER BY cloth_price ASC
+            </when>
+            <when test="option == 3">
+                ORDER BY cloth_price DESC
+            </when>
+        </choose>
     </select>
 
     <select id="getCount" parameterType="string" resultType="int">
@@ -25,14 +29,21 @@
         FROM clothes
     </select>
 
-<!--    낮은가격순-->
+<!--가격순-->
     <select id="getProductBySort" parameterType="hashMap" resultType="hashMap">
-        SELECT cloth_id, cloth_name, cloth_price
+        SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
         FROM clothes
-        WHERE cloth_type = 'shirts'
-        ORDER BY cloth_price ASC
+        WHERE cloth_type = #{category}
+        <choose>
+            <when test="option == 1">
+            </when>
+            <when test="option == 2">
+                ORDER BY cloth_price ASC
+            </when>
+            <when test="option == 3">
+                ORDER BY cloth_price DESC
+            </when>
+        </choose>
     </select>
-
-    <!--높은가격순-->
 
 </mapper>

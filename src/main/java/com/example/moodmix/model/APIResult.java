@@ -50,14 +50,6 @@ public class APIResult {
         return "Result [resultCode=" + this.resultCode + ", resultMsg=" + this.resultMsg + ", resultData=" + this.resultData + "]";
     }
 
-    @PostMapping("/getProductInfo")
-    public APIResult getProductInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
-        APIResult result = new APIResult();
-        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
-        result = productService.getInfo(dataParam);
-        return result;
-    }
-
     @PostMapping("/getProductBySort")
     public APIResult getProductBySort(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         APIResult result = new APIResult();
@@ -66,3 +58,4 @@ public class APIResult {
         return result;
     }
 }
+

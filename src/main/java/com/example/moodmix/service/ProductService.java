@@ -6,8 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface ProductService {
-    APIResult getInfo(Map<String,Object>dataParam);
-    APIResult getAllProducts();
+    APIResult getAllProducts(Map<String,Object>dataParam);
 
     int getCountByCategory(String category);
 

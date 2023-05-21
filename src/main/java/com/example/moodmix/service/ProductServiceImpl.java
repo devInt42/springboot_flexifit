@@ -16,17 +16,9 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public APIResult getInfo(Map<String, Object> dataParam) {
+    public APIResult getAllProducts(Map<String, Object> dataParam) {
         APIResult result = new APIResult();
-        List<Map<String, Object>> productList = sqlSession.getMapper(ProductMapper.class).getInfoByCategory(dataParam);
-        result.setResultData(productList);
-        return result;
-    }
-
-    @Override
-    public APIResult getAllProducts() {
-        APIResult result = new APIResult();
-        List<Map<String, Object>> productList = sqlSession.getMapper(ProductMapper.class).getAllProducts();
+        List<Map<String, Object>> productList = sqlSession.getMapper(ProductMapper.class).getAllProducts(dataParam);
         result.setResultData(productList);
         return result;
     }
