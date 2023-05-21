@@ -40,5 +40,4 @@ public class ProductServiceImpl implements ProductService {
         result.setResultData(productList);
         return result;
     }
-
 }

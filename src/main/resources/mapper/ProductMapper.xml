@@ -29,7 +29,7 @@
         FROM clothes
     </select>
 
-<!--가격순-->
+    <!--가격순-->
     <select id="getProductBySort" parameterType="hashMap" resultType="hashMap">
         SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
         FROM clothes
@@ -45,5 +45,6 @@
             </when>
         </choose>
     </select>
+
 
 </mapper>
