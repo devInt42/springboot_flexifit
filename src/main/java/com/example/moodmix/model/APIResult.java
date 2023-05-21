@@ -6,10 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.example.moodmix.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.Map;
 
 @RestController
@@ -57,6 +55,14 @@ public class APIResult {
         APIResult result = new APIResult();
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
         result = productService.getInfo(dataParam);
+        return result;
+    }
+
+    @PostMapping("/getProductBySort")
+    public APIResult getProductBySort(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = productService.getProductBySort(dataParam);
         return result;
     }
 }
