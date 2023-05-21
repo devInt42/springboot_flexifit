@@ -4,7 +4,7 @@ import com.example.moodmix.model.APIResult;
 
 import java.util.List;
 import java.util.Map;
-
+//변경 test
 public interface ProductService {
     APIResult getAllProducts(Map<String,Object>dataParam);
 
