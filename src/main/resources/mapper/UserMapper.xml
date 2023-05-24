@@ -9,4 +9,14 @@
         WHERE user_id = #{loginId}
     </select>
 
+    <update id="updateInfo" parameterType="hashMap">
+        UPDATE users
+        SET user_password = #{userPassword},
+        user_birth = #{userBirth},
+        user_sex = #{userSex},
+        user_phone = #{userPhone},
+        user_name = #{userName}
+        WHERE user_id = #{userEmail}
+    </update>
+
 </mapper>
