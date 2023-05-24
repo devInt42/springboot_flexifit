@@ -22,4 +22,12 @@ public class UserServiceImpl implements UserService {
         result.setResultData(UserInfo);
         return result;
     }
+
+//    @Override
+//    public APIResult UpdateUserInfo(Map<String, Object> dataParam) {
+//        APIResult result = new APIResult();
+//        List<Map<String, Object>> UpdateInfo = sqlSession.getMapper(UserMapper.class).updateInfo(dataParam);
+//        result.setResultData(UpdateInfo);
+//        return result;
+//    }
 }

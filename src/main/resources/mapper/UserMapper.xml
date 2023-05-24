@@ -4,7 +4,7 @@
 <mapper namespace="com.example.moodmix.mapper.UserMapper">
 
     <select id="getUserInfo" parameterType="hashMap" resultType="hashMap">
-        SELECT user_name, user_birth, user_password
+        SELECT user_name, user_birth, user_password, user_sex, user_phone
         FROM users
         WHERE user_id = #{loginId}
     </select>

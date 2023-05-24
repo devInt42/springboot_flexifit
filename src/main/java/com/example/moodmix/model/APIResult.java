@@ -67,4 +67,12 @@ public class APIResult {
         result = userService.getUserInfo(dataParam);
         return result;
     }
+
+//    @PostMapping("/UpdateUserInfo")
+//    public APIResult UpdateUserInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+//        APIResult result = new APIResult();
+//        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+//        result = userService.UpdateUserInfo(dataParam);
+//        return result;
+//    }
 }

@@ -33,4 +33,17 @@ public class UserInfoController {
 
         return result;
     }
+
+//    @PostMapping("/update")
+//    public APIResult UpdateUserInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+//        APIResult result = new APIResult();
+//
+//        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+//
+//        APIResult res = userService.UpdateUserInfo(dataParam);
+//        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+//        result.setResultData(resData);
+//
+//        return result;
+//    }
 }

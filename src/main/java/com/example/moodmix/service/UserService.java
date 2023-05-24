@@ -6,4 +6,5 @@ import java.util.Map;
 
 public interface UserService {
     APIResult getUserInfo(Map<String,Object> dataParam);
+//    APIResult UpdateUserInfo(Map<String,Object> dataParam);
 }
