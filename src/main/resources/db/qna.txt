@@ -1,0 +1,9 @@
+CREATE TABLE `qna` (
+  `qna_id` int(11) NOT NULL AUTO_INCREMENT,
+  `qna_title` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qna_content` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `qna_date` date NOT NULL,
+  `qna_imageUrl` varchar(50) NOT NULL,
+  `qna_password` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`qna_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin
