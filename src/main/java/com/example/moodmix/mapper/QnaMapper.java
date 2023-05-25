@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface QnaMapper {
-    List<Map<String, Object>> getAllList();
+    List<Map<String, Object>> getAllList(int startPage,int endPage);
 }

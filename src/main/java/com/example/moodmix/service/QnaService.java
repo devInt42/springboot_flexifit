@@ -4,5 +4,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface QnaService {
-    List<Map<String, Object>> getAllList();
+    List<Map<String, Object>> getAllList(int startPage,int endPage);
 }

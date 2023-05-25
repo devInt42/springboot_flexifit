@@ -14,8 +14,8 @@ public class QnaServiceImpl implements QnaService{
     private SqlSessionTemplate sqlSession;
 
     @Override
-    public List<Map<String, Object>> getAllList() {
+    public List<Map<String, Object>> getAllList(int startPage, int endPage) {
         QnaMapper mapper = sqlSession.getMapper(QnaMapper.class);
-        return mapper.getAllList();
+        return mapper.getAllList(startPage, endPage);
     }
 }
