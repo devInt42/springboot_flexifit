@@ -12,4 +12,9 @@
         ORDER BY q.qna_date DESC
     </select>
 
+    <select id="getTotalCount" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM qna
+    </select>
+
 </mapper>

@@ -5,4 +5,6 @@ import java.util.Map;
 
 public interface QnaService {
     List<Map<String, Object>> getAllList(int startPage,int endPage);
+    int getTotalCount();
+
 }

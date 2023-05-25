@@ -1,5 +1,6 @@
 package com.example.moodmix.service;
 
+import com.example.moodmix.mapper.ProductMapper;
 import com.example.moodmix.mapper.QnaMapper;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,10 @@ public class QnaServiceImpl implements QnaService{
     public List<Map<String, Object>> getAllList(int startPage, int endPage) {
         QnaMapper mapper = sqlSession.getMapper(QnaMapper.class);
         return mapper.getAllList(startPage, endPage);
+    }
+
+    @Override
+    public int getTotalCount() {
+        return sqlSession.getMapper(QnaMapper.class).getTotalCount();
     }
 }

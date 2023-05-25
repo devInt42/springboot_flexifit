@@ -26,4 +26,10 @@ public class QnaController {
         int endPage = page * itemsPerPage;
         return qnaService.getAllList(startPage, endPage);
     }
+    @GetMapping("/count")
+    public int getCount() {
+        int count;
+            count = qnaService.getTotalCount();
+        return (count/10) +1;
+    }
 }
