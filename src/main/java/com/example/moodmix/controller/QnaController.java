@@ -26,11 +26,12 @@ public class QnaController {
         int endPage = page * itemsPerPage;
         return qnaService.getAllList(startPage, endPage);
     }
+
     @GetMapping("/count")
     public int getCount() {
         int count;
-            count = qnaService.getTotalCount();
-        return (count/10) +1;
+        count = qnaService.getTotalCount();
+        return (count / 10) + 1;
     }
 
     @PostMapping("/insert")
@@ -42,9 +43,24 @@ public class QnaController {
         APIResult res = qnaService.insertInfo(dataParam);
         Object resultData = res.getResultData();
 
-            List<Map<String, Object>> resData = (List<Map<String, Object>>) resultData;
-            result.setResultData(resData);
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) resultData;
+        result.setResultData(resData);
 
         return result;
+    }
+
+    @PostMapping("/check")
+    public int checkPwd(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        int result = qnaService.getconfirmPwd(dataParam);
+        int resultData;
+
+        if (result == 0) {
+            resultData = 0;
+        } else {
+            resultData = 1;
+        }
+        return resultData;
     }
 }

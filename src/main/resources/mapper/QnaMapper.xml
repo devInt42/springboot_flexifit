@@ -9,7 +9,6 @@
         FROM qna q
         INNER JOIN users u ON q.user_seq = u.user_seq
         WHERE q.qna_id BETWEEN #{startPage} AND #{endPage}
-        ORDER BY q.qna_date DESC
     </select>
 
     <select id="getTotalCount" parameterType="string" resultType="int">
@@ -22,5 +21,9 @@
         VALUES (#{title}, #{content}, CURDATE(), #{userPassword}, #{userSeq})
     </insert>
 
-
+    <select id="getcheckPwd" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM qna
+        WHERE qna_id = #{qnaId}
+        AND qna_password = #{qnaPassword}
+    </select>
 </mapper>

@@ -32,6 +32,7 @@ public class ProductInfoController {
 
     @PostMapping("/sort")
     public APIResult getProductBySort(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+
         APIResult result = new APIResult();
 
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");

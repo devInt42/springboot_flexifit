@@ -9,5 +9,6 @@ public interface QnaService {
     List<Map<String, Object>> getAllList(int startPage,int endPage);
     int getTotalCount();
     APIResult insertInfo(Map<String,Object> dataParam);
+    int getconfirmPwd(Map<String,Object> dataParam);
 
 }
