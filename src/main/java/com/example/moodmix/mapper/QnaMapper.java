@@ -7,6 +7,7 @@ import java.util.Map;
 public interface QnaMapper {
     List<Map<String, Object>> getAllList(int startPage,int endPage);
     int getTotalCount();
+    void insertQnaInfo(Map<String, Object> dataParam);
 }
 
 

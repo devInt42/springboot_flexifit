@@ -2,6 +2,7 @@ package com.example.moodmix.service;
 
 import com.example.moodmix.mapper.ProductMapper;
 import com.example.moodmix.mapper.QnaMapper;
+import com.example.moodmix.model.APIResult;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -23,5 +24,13 @@ public class QnaServiceImpl implements QnaService{
     @Override
     public int getTotalCount() {
         return sqlSession.getMapper(QnaMapper.class).getTotalCount();
+    }
+
+    @Override
+    public APIResult insertInfo(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        sqlSession.getMapper(QnaMapper.class).insertQnaInfo(dataParam);
+        result.setResultData(null);
+        return result;
     }
 }

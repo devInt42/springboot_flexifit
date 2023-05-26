@@ -17,4 +17,10 @@
         FROM qna
     </select>
 
+    <insert id="insertQnaInfo" parameterType="hashMap">
+        INSERT INTO qna (qna_title, qna_content, qna_date, qna_password, user_seq)
+        VALUES (#{title}, #{content}, CURDATE(), #{userPassword}, #{userSeq})
+    </insert>
+
+
 </mapper>

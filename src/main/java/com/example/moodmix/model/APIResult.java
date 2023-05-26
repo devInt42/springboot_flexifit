@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.example.moodmix.service.ProductService;
+import com.example.moodmix.service.QnaService;
 import com.example.moodmix.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ public class APIResult {
     @Autowired
     private ProductService productService;
     private UserService userService;
+    private QnaService qnaService;
 
     private int resultCode;
     private String resultMsg;
@@ -72,7 +74,15 @@ public class APIResult {
     public APIResult UpdateUserInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         APIResult result = new APIResult();
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
-        result = userService.updateInfo(dataParam); // UpdateUserInfo 메서드 수정
+        result = userService.updateInfo(dataParam);
+        return result;
+    }
+
+    @PostMapping("/InsertQna")
+    public APIResult InsertQna(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = qnaService.insertInfo(dataParam);
         return result;
     }
 }

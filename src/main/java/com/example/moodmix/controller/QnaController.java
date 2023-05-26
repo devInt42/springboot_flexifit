@@ -1,13 +1,13 @@
 package com.example.moodmix.controller;
 
+import com.example.moodmix.model.APIResult;
 import com.example.moodmix.service.QnaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 
@@ -31,5 +31,20 @@ public class QnaController {
         int count;
             count = qnaService.getTotalCount();
         return (count/10) +1;
+    }
+
+    @PostMapping("/insert")
+    public APIResult InsertQna(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        APIResult res = qnaService.insertInfo(dataParam);
+        Object resultData = res.getResultData();
+
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) resultData;
+            result.setResultData(resData);
+
+        return result;
     }
 }
