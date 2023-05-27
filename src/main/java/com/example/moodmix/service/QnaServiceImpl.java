@@ -26,13 +26,6 @@ public class QnaServiceImpl implements QnaService{
         return sqlSession.getMapper(QnaMapper.class).getTotalCount();
     }
 
-    @Override
-    public APIResult insertInfo(Map<String, Object> dataParam) {
-        APIResult result = new APIResult();
-        sqlSession.getMapper(QnaMapper.class).insertQnaInfo(dataParam);
-        result.setResultData(null);
-        return result;
-    }
 
     @Override
     public int getconfirmPwd(Map<String, Object> dataParam) {
@@ -51,5 +44,8 @@ public class QnaServiceImpl implements QnaService{
         return sqlSession.getMapper(QnaMapper.class).deleteQna(dataParam);
     }
 
-
+    @Override
+    public void updateImageUrl(Map<String, Object> dataParam) {
+        sqlSession.getMapper(QnaMapper.class).uploadImageUrl(dataParam);
+    }
 }

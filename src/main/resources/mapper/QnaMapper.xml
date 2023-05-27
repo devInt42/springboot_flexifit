@@ -16,11 +16,6 @@
         FROM qna
     </select>
 
-    <insert id="insertQnaInfo" parameterType="hashMap">
-        INSERT INTO qna (qna_title, qna_content, qna_date, qna_password, user_seq)
-        VALUES (#{title}, #{content}, CURDATE(), #{userPassword}, #{userSeq})
-    </insert>
-
     <select id="getcheckPwd" parameterType="string" resultType="int">
         SELECT COUNT(*) FROM qna
         WHERE qna_id = #{qnaId}
@@ -38,5 +33,10 @@
         DELETE FROM qna
         WHERE qna_id = #{qnaId}
     </delete>
+
+    <insert id="uploadImageUrl" parameterType="hashMap">
+        INSERT INTO qna (qna_title, qna_content, qna_imageUrl, qna_date, user_seq, qna_password)
+        VALUES (#{title}, #{content}, #{imageUrl}, CURDATE(),#{userSeq},#{userPassword});
+    </insert>
 
 </mapper>

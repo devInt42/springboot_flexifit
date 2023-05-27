@@ -6,10 +6,11 @@ import java.util.Map;
 public interface QnaMapper {
     List<Map<String, Object>> getAllList(int startPage,int endPage);
     int getTotalCount();
-    void insertQnaInfo(Map<String, Object> dataParam);
     int getcheckPwd(Map<String, Object> dataParam);
     void updateInfo(Map<String, Object> dataParam);
     int deleteQna(Map<String, Object> dataParam);
+    void uploadImageUrl(Map<String, Object> dataParam);
 }
+
 
 

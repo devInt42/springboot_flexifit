@@ -78,14 +78,6 @@ public class APIResult {
         return result;
     }
 
-    @PostMapping("/InsertQna")
-    public APIResult InsertQna(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
-        APIResult result = new APIResult();
-        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
-        result = qnaService.insertInfo(dataParam);
-        return result;
-    }
-
     @PostMapping("/UpdateQnaInfo")
     public APIResult UpdateQnaInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         APIResult result = new APIResult();
