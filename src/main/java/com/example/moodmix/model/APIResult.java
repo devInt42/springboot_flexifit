@@ -93,4 +93,5 @@ public class APIResult {
         result = qnaService.updateInfo(dataParam);
         return result;
     }
+
 }

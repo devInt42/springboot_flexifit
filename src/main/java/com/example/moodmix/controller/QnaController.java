@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,20 +36,24 @@ public class QnaController {
     }
 
     @PostMapping("/insert")
-    public APIResult InsertQna(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+    public APIResult insertQna(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
         APIResult result = new APIResult();
 
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
 
-        APIResult res = qnaService.insertInfo(dataParam);
-        Object resultData = res.getResultData();
+        if (dataParam.get("title") == null || dataParam.get("content") == null || dataParam.get("title").toString().isEmpty() || dataParam.get("content").toString().isEmpty()) {
+            result.setResultMsg("false");
+            return result;
+        } else {
+            APIResult res = qnaService.insertInfo(dataParam);
+            Object resultData = res.getResultData();
 
-        List<Map<String, Object>> resData = (List<Map<String, Object>>) resultData;
-        result.setResultData(resData);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) resultData;
+            result.setResultData(resData);
 
-        return result;
+            return result;
+        }
     }
-
     @PostMapping("/check")
     public int checkPwd(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
