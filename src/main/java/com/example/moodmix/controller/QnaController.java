@@ -111,7 +111,7 @@ public class QnaController {
         }
         // 제목, 내용, 비밀번호 중 하나라도 비어있으면 알림 메시지를 리턴
         if (title == null || title.isEmpty() || content == null || content.isEmpty() || userPassword == null || userPassword.isEmpty()) {
-            return;
+            return; //요기서 setResultMsg에 "false"담아서 반환
         }
 
         // DB에 이미지 URL 추가
