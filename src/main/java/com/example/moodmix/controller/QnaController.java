@@ -63,4 +63,18 @@ public class QnaController {
         }
         return resultData;
     }
+
+    @PostMapping("/update")
+    public APIResult UpdateQnaInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        APIResult res = qnaService.updateInfo(dataParam);
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+        result.setResultData(resData);
+
+        return result;
+    }
+
 }

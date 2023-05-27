@@ -10,5 +10,6 @@ public interface QnaService {
     int getTotalCount();
     APIResult insertInfo(Map<String,Object> dataParam);
     int getconfirmPwd(Map<String,Object> dataParam);
+    APIResult updateInfo(Map<String, Object> dataParam);
 
 }

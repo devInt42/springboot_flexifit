@@ -9,6 +9,7 @@ public interface QnaMapper {
     int getTotalCount();
     void insertQnaInfo(Map<String, Object> dataParam);
     int getcheckPwd(Map<String, Object> dataParam);
+    void updateInfo(Map<String, Object> dataParam);
 }
 
 

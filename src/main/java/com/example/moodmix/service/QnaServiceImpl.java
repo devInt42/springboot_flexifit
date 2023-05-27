@@ -1,6 +1,7 @@
 package com.example.moodmix.service;
 
 import com.example.moodmix.mapper.QnaMapper;
+import com.example.moodmix.mapper.UserMapper;
 import com.example.moodmix.model.APIResult;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,12 @@ public class QnaServiceImpl implements QnaService{
     @Override
     public int getconfirmPwd(Map<String, Object> dataParam) {
         return sqlSession.getMapper(QnaMapper.class).getcheckPwd(dataParam);
+    }
+
+    @Override
+    public APIResult updateInfo(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        sqlSession.getMapper(QnaMapper.class).updateInfo(dataParam);
+        return result;
     }
 }
