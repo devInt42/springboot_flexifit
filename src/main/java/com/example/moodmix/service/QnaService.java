@@ -11,5 +11,5 @@ public interface QnaService {
     APIResult insertInfo(Map<String,Object> dataParam);
     int getconfirmPwd(Map<String,Object> dataParam);
     APIResult updateInfo(Map<String, Object> dataParam);
-
+    int delete(Map<String, Object> dataParam);
 }

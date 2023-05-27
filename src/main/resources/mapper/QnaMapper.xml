@@ -33,4 +33,10 @@
         qna_content = #{content}
         WHERE qna_id = #{qnaId}
     </update>
+
+    <delete id="deleteQna" parameterType="hashMap">
+        DELETE FROM qna
+        WHERE qna_id = #{qnaId}
+    </delete>
+
 </mapper>

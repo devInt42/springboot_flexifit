@@ -45,4 +45,11 @@ public class QnaServiceImpl implements QnaService{
         sqlSession.getMapper(QnaMapper.class).updateInfo(dataParam);
         return result;
     }
+
+    @Override
+    public int delete(Map<String, Object> dataParam) {
+        return sqlSession.getMapper(QnaMapper.class).deleteQna(dataParam);
+    }
+
+
 }
