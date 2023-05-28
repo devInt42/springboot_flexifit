@@ -86,4 +86,12 @@ public class APIResult {
         return result;
     }
 
+    @PostMapping("/UpdateFaqInfo")
+    public APIResult UpdateFaqInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = qnaService.updateInfo(dataParam);
+        return result;
+    }
+
 }

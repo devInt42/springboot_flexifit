@@ -5,4 +5,5 @@ import java.util.Map;
 
 public interface FaqMapper {
     List<Map<String, Object>> getAllList();
+    void updateInfo(Map<String, Object> dataParam);
 }

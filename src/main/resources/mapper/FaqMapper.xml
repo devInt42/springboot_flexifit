@@ -8,4 +8,10 @@
         SELECT faq_id, faq_title, faq_content FROM faq;
     </select>
 
+    <update id="updateInfo" parameterType="hashMap">
+        UPDATE faq
+        SET faq_title = #{faqTitle},
+        faq_content = #{faqContent}
+        WHERE faq_id = #{selectedId}
+    </update>
 </mapper>
