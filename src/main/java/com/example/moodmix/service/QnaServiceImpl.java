@@ -45,7 +45,7 @@ public class QnaServiceImpl implements QnaService{
     }
 
     @Override
-    public void updateImageUrl(Map<String, Object> dataParam) {
-        sqlSession.getMapper(QnaMapper.class).uploadImageUrl(dataParam);
+    public void insertImageUrl(Map<String, Object> dataParam) {
+        sqlSession.getMapper(QnaMapper.class).insertImageUrl(dataParam);
     }
 }

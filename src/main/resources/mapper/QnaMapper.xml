@@ -34,7 +34,7 @@
         WHERE qna_id = #{qnaId}
     </delete>
 
-    <insert id="uploadImageUrl" parameterType="hashMap">
+    <insert id="insertImageUrl" parameterType="hashMap">
         INSERT INTO qna (qna_title, qna_content, qna_imageUrl, qna_date, user_seq, qna_password)
         VALUES (#{title}, #{content}, #{imageUrl}, CURDATE(),#{userSeq},#{userPassword});
     </insert>
