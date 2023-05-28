@@ -76,8 +76,7 @@ public class QnaController {
 //        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
 //        result.setResultData(resData);
 //
-//        return result;
-//    }
+//        return result;    }
 
     @PostMapping("/delete")
     public int deleteQna(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
