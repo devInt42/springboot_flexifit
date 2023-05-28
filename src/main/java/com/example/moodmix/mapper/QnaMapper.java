@@ -10,6 +10,7 @@ public interface QnaMapper {
     void updateInfo(Map<String, Object> dataParam);
     int deleteQna(Map<String, Object> dataParam);
     void insertImageUrl(Map<String, Object> dataParam);
+    void updateQna(Map<String, Object> dataParam);
 }
 
 

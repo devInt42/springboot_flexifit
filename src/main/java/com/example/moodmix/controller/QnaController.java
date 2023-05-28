@@ -66,18 +66,43 @@ public class QnaController {
         return resultData;
     }
 
-//    @PostMapping("/update")
-//    public APIResult UpdateQnaInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
-//        APIResult result = new APIResult();
-//
-//        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
-//
-//        APIResult res = qnaService.updateInfo(dataParam);
-//        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
-//        result.setResultData(resData);
-//
-//        return result;
-//    }
+    @PostMapping("/update")
+    public APIResult updateQnaInfo(
+            @RequestPart(value = "file", required = false) MultipartFile file,
+            @RequestParam("title") String title,
+            @RequestParam("content") String content,
+            @RequestParam("qnaId") int qnaId
+    ) {
+        APIResult result = new APIResult();
+        String uploadDir = "C:/uploads";
+        String fileName = null;
+
+        // 파일이 존재하는 경우에만 파일 처리
+        if (file != null && !file.isEmpty()) {
+            fileName = StringUtils.cleanPath(file.getOriginalFilename());
+
+            try {
+                File dest = new File(uploadDir + File.separator + fileName);
+                file.transferTo(dest);
+            } catch (IOException e) {
+                result.setResultMsg("error");
+                e.printStackTrace();
+                return result;
+            }
+        }
+
+        // DB에 이미지 URL 추가
+        String imageUrl = fileName != null ? "http://localhost:8080/uploads/" + fileName : null;
+        Map<String, Object> dataParam = new HashMap<>();
+        dataParam.put("imageUrl", imageUrl);
+        dataParam.put("title", title);
+        dataParam.put("content", content);
+        dataParam.put("qnaId", qnaId);
+
+        qnaService.updateQna(dataParam); // DB에 이미지 URL 업데이트
+
+        return result;
+    }
 
     @PostMapping("/delete")
     public int deleteQna(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
