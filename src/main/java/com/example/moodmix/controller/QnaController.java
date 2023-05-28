@@ -76,7 +76,8 @@ public class QnaController {
 //        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
 //        result.setResultData(resData);
 //
-//        return result;    }
+//        return result;
+//    }
 
     @PostMapping("/delete")
     public int deleteQna(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
@@ -86,13 +87,14 @@ public class QnaController {
     }
 
     @PostMapping("/insert")
-    public void uploadFile(
+    public APIResult uploadFile(
             @RequestPart(value = "file", required = false) MultipartFile file,
             @RequestParam("title") String title,
             @RequestParam("content") String content,
             @RequestParam("userSeq") int userSeq,
             @RequestParam("userPassword") String userPassword
     ) {
+        APIResult result = new APIResult();
         String uploadDir = "C:/uploads";
         String fileName = null;
 
@@ -104,13 +106,15 @@ public class QnaController {
                 File dest = new File(uploadDir + File.separator + fileName);
                 file.transferTo(dest);
             } catch (IOException e) {
+                result.setResultMsg("error");
                 e.printStackTrace();
-                return;
+                return result;
             }
         }
         // 제목, 내용, 비밀번호 중 하나라도 비어있으면 알림 메시지를 리턴
         if (title == null || title.isEmpty() || content == null || content.isEmpty() || userPassword == null || userPassword.isEmpty()) {
-            return; //요기서 setResultMsg에 "false"담아서 반환
+            result.setResultMsg("false");
+            return result; //요기서 setResultMsg에 "false"담아서 반환
         }
 
         // DB에 이미지 URL 추가
@@ -123,5 +127,9 @@ public class QnaController {
         dataParam.put("userPassword", userPassword);
 
         qnaService.insertImageUrl(dataParam); // DB에 이미지 URL 업데이트
+
+        result.setResultMsg("성공");
+
+        return result;
     }
 }
