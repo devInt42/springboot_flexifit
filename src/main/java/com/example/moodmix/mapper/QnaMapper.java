@@ -13,7 +13,7 @@ public interface QnaMapper {
     void updateQna(Map<String, Object> dataParam);
     void insertReply(Map<String, Object> dataParam);
     List<Map<String, Object>> getReplyList();
-
+    void updateReply(Map<String, Object> dataParam);
 }
 
 

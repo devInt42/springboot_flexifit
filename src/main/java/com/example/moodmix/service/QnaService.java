@@ -15,4 +15,5 @@ public interface QnaService {
     void updateQna(Map<String, Object> dataParam);
     APIResult insertReply(Map<String, Object> dataParam);
     List<Map<String, Object>> getReplyList();
+    APIResult updateReply(Map<String, Object> dataParam);
 }

@@ -158,7 +158,8 @@ public class QnaController {
         return result;
     }
 
-    @PostMapping("/reply")
+    //값이 있으면 update
+    @PostMapping("/reply/insert")
     public APIResult InsertQnaReply(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
         APIResult result = new APIResult();
 
@@ -169,6 +170,22 @@ public class QnaController {
             return result;
         }else {
             APIResult res = qnaService.insertReply(dataParam);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+            return result;
+        }
+    }
+    @PostMapping("/reply/update")
+    public APIResult UpdateQnaReply(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        if (dataParam.get("reply") == null || dataParam.get("reply").toString().trim().isEmpty()) {
+            result.setResultMsg("false");
+            return result;
+        }else {
+            APIResult res = qnaService.updateReply(dataParam);
             List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
             result.setResultData(resData);
             return result;

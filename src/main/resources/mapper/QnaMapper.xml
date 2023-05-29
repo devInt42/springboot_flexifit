@@ -55,4 +55,10 @@
     <select id="getReplyList" parameterType="hashMap" resultType="hashMap">
         SELECT * from reply
     </select>
+
+    <update id="updateReply" parameterType="hashMap">
+        UPDATE reply
+        SET reply_content = #{reply}
+        WHERE qna_id = #{qnaId}
+    </update>
 </mapper>
