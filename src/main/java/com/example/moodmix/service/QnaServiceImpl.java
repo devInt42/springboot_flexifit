@@ -60,4 +60,10 @@ public class QnaServiceImpl implements QnaService{
         sqlSession.getMapper(QnaMapper.class).insertReply(dataParam);
         return result;
     }
+
+    @Override
+    public List<Map<String, Object>> getReplyList() {
+        QnaMapper mapper = sqlSession.getMapper(QnaMapper.class);
+        return mapper.getReplyList();
+    }
 }

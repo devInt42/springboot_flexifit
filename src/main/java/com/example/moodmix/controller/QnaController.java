@@ -174,4 +174,8 @@ public class QnaController {
             return result;
         }
     }
+    @GetMapping("/replyList")
+    public List<Map<String, Object>> getAllList() {
+        return qnaService.getReplyList();
+    }
 }

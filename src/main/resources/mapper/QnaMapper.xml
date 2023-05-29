@@ -51,4 +51,8 @@
         INSERT INTO reply (reply_content, qna_id)
         VALUES (#{reply}, #{qnaId})
     </insert>
+
+    <select id="getReplyList" parameterType="hashMap" resultType="hashMap">
+        SELECT * from reply
+    </select>
 </mapper>

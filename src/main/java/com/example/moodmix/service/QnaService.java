@@ -14,4 +14,5 @@ public interface QnaService {
     void insertImageUrl(Map<String, Object> dataParam);
     void updateQna(Map<String, Object> dataParam);
     APIResult insertReply(Map<String, Object> dataParam);
+    List<Map<String, Object>> getReplyList();
 }
