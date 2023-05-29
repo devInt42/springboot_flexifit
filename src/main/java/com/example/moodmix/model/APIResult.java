@@ -103,4 +103,11 @@ public class APIResult {
         result = faqService.insertInfo(dataParam);
         return result;
     }
+    @PostMapping("/InsertQnaReply")
+    public APIResult InsertQnaReply(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = qnaService.insertReply(dataParam);
+        return result;
+    }
 }

@@ -47,4 +47,8 @@
         WHERE qna_id = #{qnaId}
     </update>
 
+    <insert id="insertReply" parameterType="hashMap">
+        INSERT INTO reply (reply_content, qna_id)
+        VALUES (#{reply}, #{qnaId})
+    </insert>
 </mapper>

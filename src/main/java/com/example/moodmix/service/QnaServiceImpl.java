@@ -54,4 +54,10 @@ public class QnaServiceImpl implements QnaService{
         sqlSession.getMapper(QnaMapper.class).updateQna(dataParam);
     }
 
+    @Override
+    public APIResult insertReply(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        sqlSession.getMapper(QnaMapper.class).insertReply(dataParam);
+        return result;
+    }
 }
