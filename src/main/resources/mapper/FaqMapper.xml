@@ -20,4 +20,9 @@
         WHERE faq_id = #{selectedId}
     </delete>
 
+    <insert id="insertInfo" parameterType="hashMap">
+        INSERT INTO faq (faq_title, faq_content)
+        VALUES (#{title}, #{content});
+    </insert>
+
 </mapper>

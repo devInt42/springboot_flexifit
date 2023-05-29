@@ -53,4 +53,5 @@ public class QnaServiceImpl implements QnaService{
     public void updateQna(Map<String, Object> dataParam) {
         sqlSession.getMapper(QnaMapper.class).updateQna(dataParam);
     }
+
 }

@@ -3,6 +3,7 @@ package com.example.moodmix.model;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.moodmix.service.FaqService;
 import com.example.moodmix.service.ProductService;
 import com.example.moodmix.service.QnaService;
 import com.example.moodmix.service.UserService;
@@ -18,6 +19,7 @@ public class APIResult {
     private ProductService productService;
     private UserService userService;
     private QnaService qnaService;
+    private FaqService faqService;
 
     private int resultCode;
     private String resultMsg;
@@ -94,4 +96,11 @@ public class APIResult {
         return result;
     }
 
+    @PostMapping("/InsertFaqInfo")
+    public APIResult InsertFaqInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = faqService.insertInfo(dataParam);
+        return result;
+    }
 }

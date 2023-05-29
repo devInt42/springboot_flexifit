@@ -32,4 +32,11 @@ public class FaqServiceImpl implements FaqService{
     public int delete(Map<String, Object> dataParam) {
         return sqlSession.getMapper(FaqMapper.class).deleteFaq(dataParam);
     }
+
+    @Override
+    public APIResult insertInfo(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        sqlSession.getMapper(FaqMapper.class).insertInfo(dataParam);
+        return result;
+    }
 }

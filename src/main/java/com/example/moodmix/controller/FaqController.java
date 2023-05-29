@@ -43,4 +43,22 @@ public class FaqController {
 
         return faqService.delete(dataParam);
     }
+    @PostMapping("/insert")
+    public APIResult InsertFaqInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        if (dataParam.get("title") == null || dataParam.get("content") == null || dataParam.get("title").toString().trim().isEmpty() || dataParam.get("content").toString().trim().isEmpty()) {
+                result.setResultMsg("false");
+                return result;
+            }else {
+            APIResult res = faqService.insertInfo(dataParam);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+
+            return result;
+        }
+    }
+
 }
