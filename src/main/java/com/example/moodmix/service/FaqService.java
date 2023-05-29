@@ -8,4 +8,5 @@ import java.util.Map;
 public interface FaqService {
     List<Map<String, Object>> getAllList();
     APIResult updateInfo(Map<String, Object> dataParam);
+    int delete(Map<String, Object> dataParam);
 }

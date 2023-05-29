@@ -27,4 +27,9 @@ public class FaqServiceImpl implements FaqService{
         sqlSession.getMapper(FaqMapper.class).updateInfo(dataParam);
         return result;
     }
+
+    @Override
+    public int delete(Map<String, Object> dataParam) {
+        return sqlSession.getMapper(FaqMapper.class).deleteFaq(dataParam);
+    }
 }

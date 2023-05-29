@@ -14,4 +14,10 @@
         faq_content = #{faqContent}
         WHERE faq_id = #{selectedId}
     </update>
+
+    <delete id="deleteFaq" parameterType="hashMap">
+        DELETE FROM Faq
+        WHERE faq_id = #{selectedId}
+    </delete>
+
 </mapper>

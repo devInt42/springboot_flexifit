@@ -37,4 +37,10 @@ public class FaqController {
 
         return result;
     }
+    @PostMapping("/delete")
+    public int deleteFaq(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        return faqService.delete(dataParam);
+    }
 }
