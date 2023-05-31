@@ -46,5 +46,21 @@
         </choose>
     </select>
 
+    <select id="getProductInfo" parameterType="hashMap" resultType="hashMap">
+        SELECT *
+        FROM clothes
+        JOIN clothes_image ON clothes.cloth_id = clothes_image.cloth_id
+        WHERE clothes.cloth_id = #{clothId} AND clothes_image.cloth_color = #{clothColor};
+    </select>
+
+    <select id="getColorList" parameterType="hashMap" resultType="hashMap">
+        SELECT DISTINCT cloth_color
+        FROM clothes_image WHERE cloth_id = #{clothId} ;
+    </select>
+
+    <select id="getSizeList" parameterType="hashMap" resultType="hashMap">
+        SELECT DISTINCT cloth_size
+        FROM clothes_image WHERE cloth_id = #{clothId} ;
+    </select>
 
 </mapper>

@@ -8,4 +8,8 @@ public interface ProductMapper {
     int getCount(String category);
     int getTotalCount();
     List<Map<String, Object>> getProductBySort(Map<String, Object> dataParam);
+    List<Map<String, Object>> getProductInfo(Map<String, Object> dataParam);
+    List<Map<String, Object>> getColorList(Map<String, Object> dataParam);
+    List<Map<String, Object>> getSizeList(Map<String, Object> dataParam);
+
 }

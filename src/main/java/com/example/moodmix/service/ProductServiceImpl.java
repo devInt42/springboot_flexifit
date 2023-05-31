@@ -40,4 +40,28 @@ public class ProductServiceImpl implements ProductService {
         result.setResultData(productList);
         return result;
     }
+
+    @Override
+    public APIResult getOneProduct(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        List<Map<String, Object>> productList = sqlSession.getMapper(ProductMapper.class).getProductInfo(dataParam);
+        result.setResultData(productList);
+        return result;
+    }
+
+    @Override
+    public APIResult getColorList(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        List<Map<String, Object>> ColorList = sqlSession.getMapper(ProductMapper.class).getColorList(dataParam);
+        result.setResultData(ColorList);
+        return result;
+    }
+
+    @Override
+    public APIResult getSizeList(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        List<Map<String, Object>> SizeList = sqlSession.getMapper(ProductMapper.class).getSizeList(dataParam);
+        result.setResultData(SizeList);
+        return result;
+    }
 }

@@ -2,6 +2,7 @@ package com.example.moodmix.service;
 
 import com.example.moodmix.model.APIResult;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ProductService {
@@ -12,4 +13,7 @@ public interface ProductService {
     int getTotalCount();
 
     APIResult getProductBySort(Map<String,Object>dataParam);
+    APIResult getOneProduct(Map<String,Object>dataParam);
+    APIResult getColorList(Map<String,Object>dataParam);
+    APIResult getSizeList(Map<String,Object>dataParam);
 }

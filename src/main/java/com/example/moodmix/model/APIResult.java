@@ -63,6 +63,27 @@ public class APIResult {
         result = productService.getProductBySort(dataParam);
         return result;
     }
+    @PostMapping("/getProductDetail")
+    public APIResult getProductDetail(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = productService.getOneProduct(dataParam);
+        return result;
+    }
+    @PostMapping("/getProductColor")
+    public APIResult getProductColor(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = productService.getColorList(dataParam);
+        return result;
+    }
+    @PostMapping("/getProductSize")
+    public APIResult getProductSize(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = productService.getSizeList(dataParam);
+        return result;
+    }
 
     @PostMapping("/getUserInfo")
     public APIResult getUserInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
