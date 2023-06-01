@@ -63,4 +63,25 @@
         FROM clothes_image WHERE cloth_id = #{clothId} ;
     </select>
 
+    <!--    중복체크 있으면 0 / 없으면 1-->
+    <insert id="SignUp" parameterType="map">
+        INSERT INTO users(user_id, user_password, user_name, user_birth)
+        SELECT
+        #{userId},
+        #{userPassword},
+        #{userName},
+        #{userBirth}
+        FROM dual
+        WHERE NOT EXISTS (
+        SELECT user_id
+        FROM users
+        WHERE user_id = #{userId}
+        )
+    </insert>
+
+    <insert id="insertWishList" parameterType="hashMap">
+        INSERT INTO wishlist (user_seq, cloth_id)
+        VALUES (#{userSeq}, #{clothId});
+    </insert>
+
 </mapper>

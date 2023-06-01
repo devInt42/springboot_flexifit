@@ -1,0 +1,10 @@
+CREATE TABLE `wishlist` (
+  `wishlist_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_seq` int(11) DEFAULT NULL,
+  `cloth_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`wishlist_id`),
+  KEY `user_seq` (`user_seq`),
+  KEY `cloth_id` (`cloth_id`),
+  CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`user_seq`) REFERENCES `users` (`user_seq`),
+  CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`cloth_id`) REFERENCES `clothes` (`cloth_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin

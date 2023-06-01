@@ -85,6 +85,13 @@ public class APIResult {
         return result;
     }
 
+    @PostMapping("/InsertWishList")
+    public APIResult InsertWishList(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = productService.insertWishList(dataParam);
+        return result;
+    }
     @PostMapping("/getUserInfo")
     public APIResult getUserInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         APIResult result = new APIResult();

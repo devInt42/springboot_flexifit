@@ -19,7 +19,7 @@ public class ProductInfoController {
     private ProductService productService;
 
     @GetMapping("/count")
-    public int getCount(@RequestParam(value= "category", required = false) String category) {
+    public int getCount(@RequestParam(value = "category", required = false) String category) {
         int count;
 
         if (category == null || category.isEmpty()) {
@@ -41,7 +41,7 @@ public class ProductInfoController {
             APIResult res = productService.getAllProducts(dataParam);
             List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
             result.setResultData(resData);
-        }else {
+        } else {
             APIResult res = productService.getProductBySort(dataParam);
             List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
             result.setResultData(resData);
@@ -56,9 +56,9 @@ public class ProductInfoController {
 
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
 
-            APIResult res = productService.getOneProduct(dataParam);
-            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
-            result.setResultData(resData);
+        APIResult res = productService.getOneProduct(dataParam);
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+        result.setResultData(resData);
 
         return result;
     }
@@ -89,5 +89,22 @@ public class ProductInfoController {
         result.setResultData(resData);
 
         return result;
+    }
+    @PostMapping("/wishlist/insert")
+    public APIResult InsertWishList(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        if (dataParam.get("clothId") == null || dataParam.get("userSeq") == null || dataParam.get("clothId").toString().trim().isEmpty() || dataParam.get("userSeq").toString().trim().isEmpty()) {
+            result.setResultMsg("false");
+            return result;
+        }else {
+            APIResult res = productService.insertWishList(dataParam);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+
+            return result;
+        }
     }
 }

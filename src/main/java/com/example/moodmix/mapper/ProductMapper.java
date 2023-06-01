@@ -11,5 +11,5 @@ public interface ProductMapper {
     List<Map<String, Object>> getProductInfo(Map<String, Object> dataParam);
     List<Map<String, Object>> getColorList(Map<String, Object> dataParam);
     List<Map<String, Object>> getSizeList(Map<String, Object> dataParam);
-
+    void insertWishList(Map<String, Object> dataParam);
 }

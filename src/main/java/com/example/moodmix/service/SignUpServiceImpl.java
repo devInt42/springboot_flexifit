@@ -15,7 +15,6 @@ public class SignUpServiceImpl implements SignUpService {
     @Override
     public int checkSignUp(Map<String, Object> dataParam) {
         SignUpMapper mapper = sqlSession.getMapper(SignUpMapper.class);
-//        return mapper.SignUp(dataParam);
         return mapper.SignUp(dataParam);
     }
 }

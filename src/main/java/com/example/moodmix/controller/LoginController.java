@@ -47,7 +47,6 @@ public class LoginController {
         }
 
         int result = SignUpService.checkSignUp(dataParam);
-        System.out.println(result); // 중복체크
         return result;
     }
 

@@ -1,6 +1,8 @@
 package com.example.moodmix.service;
 
+import com.example.moodmix.mapper.FaqMapper;
 import com.example.moodmix.mapper.ProductMapper;
+import com.example.moodmix.mapper.SignUpMapper;
 import com.example.moodmix.model.APIResult;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +65,13 @@ public class ProductServiceImpl implements ProductService {
         List<Map<String, Object>> SizeList = sqlSession.getMapper(ProductMapper.class).getSizeList(dataParam);
         result.setResultData(SizeList);
         return result;
+    }
+
+    @Override
+    public APIResult insertWishList(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        sqlSession.getMapper(ProductMapper.class).insertWishList(dataParam);
+        return result;
+
     }
 }

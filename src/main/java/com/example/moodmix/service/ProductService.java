@@ -16,4 +16,5 @@ public interface ProductService {
     APIResult getOneProduct(Map<String,Object>dataParam);
     APIResult getColorList(Map<String,Object>dataParam);
     APIResult getSizeList(Map<String,Object>dataParam);
+    APIResult insertWishList(Map<String, Object> dataParam);
 }
