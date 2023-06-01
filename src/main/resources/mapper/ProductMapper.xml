@@ -84,4 +84,11 @@
         VALUES (#{userSeq}, #{clothId});
     </insert>
 
+    <select id="getWishList" parameterType="hashMap" resultType="hashMap">
+        SELECT c.cloth_name, c.cloth_price, c.cloth_discount, c.cloth_defaultImage
+        FROM wishlist w
+        JOIN clothes c ON w.cloth_id = c.cloth_id
+        WHERE w.user_seq = #{userSeq};
+    </select>
+
 </mapper>

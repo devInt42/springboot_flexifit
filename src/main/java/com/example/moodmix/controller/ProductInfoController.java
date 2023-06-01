@@ -107,4 +107,16 @@ public class ProductInfoController {
             return result;
         }
     }
+    @PostMapping("/getWishList")
+    //중복 막기
+    public APIResult getWishList(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+            APIResult res = productService.getWishList(dataParam);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+            return result;
+    }
 }
