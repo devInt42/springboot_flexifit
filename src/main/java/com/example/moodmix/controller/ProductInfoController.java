@@ -90,6 +90,7 @@ public class ProductInfoController {
 
         return result;
     }
+
     @PostMapping("/wishlist/insert")
     public APIResult InsertWishList(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
         APIResult result = new APIResult();
@@ -99,7 +100,7 @@ public class ProductInfoController {
         if (dataParam.get("clothId") == null || dataParam.get("userSeq") == null || dataParam.get("clothId").toString().trim().isEmpty() || dataParam.get("userSeq").toString().trim().isEmpty()) {
             result.setResultMsg("false");
             return result;
-        }else {
+        } else {
             APIResult res = productService.insertWishList(dataParam);
             List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
             result.setResultData(resData);
@@ -107,6 +108,7 @@ public class ProductInfoController {
             return result;
         }
     }
+
     @PostMapping("/getWishList")
     //중복 막기
     public APIResult getWishList(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
@@ -114,9 +116,17 @@ public class ProductInfoController {
 
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
 
-            APIResult res = productService.getWishList(dataParam);
-            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
-            result.setResultData(resData);
-            return result;
+        APIResult res = productService.getWishList(dataParam);
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+        result.setResultData(resData);
+        return result;
+    }
+
+    @PostMapping("/deleteWishList")
+    //중복 막기
+    public int deleteWishList(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        return productService.deleteWishList(dataParam);
     }
 }

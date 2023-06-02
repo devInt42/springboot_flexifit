@@ -85,10 +85,15 @@
     </insert>
 
     <select id="getWishList" parameterType="hashMap" resultType="hashMap">
-        SELECT c.cloth_name, c.cloth_price, c.cloth_discount, c.cloth_defaultImage
+        SELECT c.cloth_name, c.cloth_price, c.cloth_discount, c.cloth_defaultImage, c.cloth_id
         FROM wishlist w
         JOIN clothes c ON w.cloth_id = c.cloth_id
         WHERE w.user_seq = #{userSeq};
     </select>
+
+    <delete id="deleteWishList" parameterType="hashMap">
+        DELETE FROM wishlist
+        WHERE cloth_id = #{clothId}
+    </delete>
 
 </mapper>

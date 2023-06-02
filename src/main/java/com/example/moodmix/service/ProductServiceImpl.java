@@ -2,6 +2,7 @@ package com.example.moodmix.service;
 
 import com.example.moodmix.mapper.FaqMapper;
 import com.example.moodmix.mapper.ProductMapper;
+import com.example.moodmix.mapper.QnaMapper;
 import com.example.moodmix.mapper.SignUpMapper;
 import com.example.moodmix.model.APIResult;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -82,4 +83,10 @@ public class ProductServiceImpl implements ProductService {
         result.setResultData(WishList);
         return result;
     }
+
+    @Override
+    public int deleteWishList(Map<String, Object> dataParam) {
+        return sqlSession.getMapper(ProductMapper.class).deleteWishList(dataParam);
+    }
 }
+
