@@ -98,17 +98,24 @@ public class ProductInfoController {
 
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
 
-        if (dataParam.get("clothId") == null || dataParam.get("userSeq") == null || dataParam.get("clothId").toString().trim().isEmpty() || dataParam.get("userSeq").toString().trim().isEmpty()) {
+        List<Map<String, Object>> wishList = (List<Map<String, Object>>) dataParam.get("wishList");
+        String clothId = dataParam.get("clothId").toString();
+
+        //중복 체크
+        boolean isClothIdMatched = wishList.stream().anyMatch(item -> item.get("cloth_id").toString().equals(clothId));
+        if (isClothIdMatched) {
+            result.setResultMsg("duplicate");
+            return result;
+        } else if (dataParam.get("userSeq") == null || clothId.trim().isEmpty() || dataParam.get("userSeq").toString().trim().isEmpty()) {
             result.setResultMsg("false");
             return result;
         } else {
             APIResult res = productService.insertWishList(dataParam);
             List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
             result.setResultData(resData);
-
             return result;
         }
-    }
+}
 
     @PostMapping("/getWishList")
     //중복 막기
