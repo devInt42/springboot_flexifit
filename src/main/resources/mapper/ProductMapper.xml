@@ -96,4 +96,6 @@
         WHERE cloth_id = #{clothId}
     </delete>
 
+
+
 </mapper>
