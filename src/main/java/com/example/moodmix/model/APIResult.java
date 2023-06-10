@@ -99,6 +99,21 @@ public class APIResult {
         result = productService.getWishList(dataParam);
         return result;
     }
+    @PostMapping("/insertMyBag")
+    public APIResult insertMyBag(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = productService.insertMyBag(dataParam);
+        return result;
+    }
+    @PostMapping("/getShoppingList")
+    public APIResult getShoppingList(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = productService.getShoppingList(dataParam);
+        return result;
+    }
+
     @PostMapping("/getUserInfo")
     public APIResult getUserInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         APIResult result = new APIResult();

@@ -137,4 +137,38 @@ public class ProductInfoController {
 
         return productService.deleteWishList(dataParam);
     }
+
+    @PostMapping("/myBag/insert")
+    //중복 막기
+    public APIResult insertMyBag(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        if (dataParam.get("userSeq") == null || dataParam.get("userSeq").toString().trim().isEmpty()) {
+            result.setResultMsg("false");
+            return result;
+        } else if (dataParam.get("totalCount") == null || Integer.parseInt(dataParam.get("totalCount").toString()) == 0) {
+            result.setResultMsg("noData");
+            return result;
+        } else {
+            APIResult res = productService.insertMyBag(dataParam);
+            List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+            result.setResultData(resData);
+            return result;
+        }
+    }
+    @PostMapping("/getShoppingList")
+    public APIResult getShoppingList(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        APIResult res = productService.getShoppingList(dataParam);
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+        result.setResultData(resData);
+
+        return result;
+    }
 }

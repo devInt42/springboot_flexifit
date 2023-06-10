@@ -86,6 +86,21 @@ public class ProductServiceImpl implements ProductService {
         return sqlSession.getMapper(ProductMapper.class).deleteWishList(dataParam);
     }
 
+    @Override
+    public APIResult insertMyBag(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        sqlSession.getMapper(ProductMapper.class).insertMyBag(dataParam);
+        return result;
+    }
+
+    @Override
+    public APIResult getShoppingList(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        List<Map<String, Object>> ShopList = sqlSession.getMapper(ProductMapper.class).getShoppingList(dataParam);
+        result.setResultData(ShopList);
+        return result;
+    }
+
 
 }
 

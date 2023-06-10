@@ -96,6 +96,15 @@
         WHERE cloth_id = #{clothId}
     </delete>
 
+    <insert id="insertMyBag" parameterType="hashMap">
+        INSERT INTO shoppingcart (user_seq, cloth_id, cloth_color, cloth_size, cloth_totalCount, custom_frontImageUrl, custom_backImageUrl)
+        VALUES (#{userSeq}, #{clothId}, #{clothColor}, #{selectedSize}, #{totalCount}, #{mergedFrontImage}, #{mergedBackImage})
+    </insert>
 
-
+    <select id="getShoppingList" parameterType="hashMap" resultType="hashMap">
+        SELECT sc.custom_frontImageUrl, sc.custom_backImageUrl, sc.cloth_size, sc.cloth_totalCount, sc.cloth_color, c.cloth_discount, c.cloth_name
+        FROM shoppingcart sc
+        JOIN clothes c ON sc.cloth_id = c.cloth_id
+        WHERE  sc.user_seq = #{userSeq}
+    </select>
 </mapper>

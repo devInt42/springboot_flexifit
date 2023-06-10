@@ -1,0 +1,12 @@
+CREATE TABLE `shoppingcart` (
+  `shoppingcart_seq` int(11) NOT NULL AUTO_INCREMENT,
+  `user_seq` int(11) NOT NULL,
+  `cloth_id` int(11) NOT NULL,
+  `custom_frontImageUrl` longtext NOT NULL,
+  `custom_backImageUrl` longtext NOT NULL,
+  PRIMARY KEY (`shoppingcart_seq`) USING BTREE,
+  KEY `user_seq` (`user_seq`),
+  KEY `cloth_id` (`cloth_id`),
+  CONSTRAINT `shoppingcart_ibfk_1` FOREIGN KEY (`user_seq`) REFERENCES `users` (`user_seq`),
+  CONSTRAINT `shoppingcart_ibfk_2` FOREIGN KEY (`cloth_id`) REFERENCES `clothes` (`cloth_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin
