@@ -34,6 +34,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public int getCountByShop(int userSeq) {
+        return sqlSession.getMapper(ProductMapper.class).getCountByShop(userSeq);
+    }
+
+
+    @Override
     public APIResult getProductBySort(Map<String, Object> dataParam) {
         APIResult result = new APIResult();
         List<Map<String, Object>> productList = sqlSession.getMapper(ProductMapper.class).getProductBySort(dataParam);

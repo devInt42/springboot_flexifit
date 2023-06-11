@@ -11,7 +11,7 @@ public interface ProductService {
     int getCountByCategory(String category);
 
     int getTotalCount();
-
+    int  getCountByShop(int userSeq);
     APIResult getProductBySort(Map<String,Object>dataParam);
     APIResult getOneProduct(Map<String,Object>dataParam);
     APIResult getColorList(Map<String,Object>dataParam);
@@ -21,6 +21,5 @@ public interface ProductService {
     int deleteWishList(Map<String, Object> dataParam);
     APIResult insertMyBag(Map<String, Object> dataParam);
     APIResult getShoppingList(Map<String, Object> dataParam);
-
 
 }

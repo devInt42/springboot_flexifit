@@ -171,4 +171,12 @@ public class ProductInfoController {
 
         return result;
     }
+
+    @GetMapping("/shopcount")
+    public int getShopCount(@RequestParam(value = "userSeq", required = false) Integer userSeq) {
+        if (userSeq == null) {
+            return 0;
+        }
+        return productService.getCountByShop(userSeq);
+    }
 }
