@@ -15,6 +15,7 @@ public interface ProductMapper {
     void insertWishList(Map<String, Object> dataParam);
     List<Map<String, Object>> getWishList(Map<String, Object> dataParam);
     int deleteWishList(Map<String, Object> dataParam);
+    int deleteShoppingList(Map<String, Object> dataParam);
     void insertMyBag(Map<String, Object> dataParam);
     List<Map<String, Object>> getShoppingList(Map<String, Object> dataParam);
 

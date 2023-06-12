@@ -93,6 +93,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public int deleteShoppingList(Map<String, Object> dataParam) {
+        return sqlSession.getMapper(ProductMapper.class).deleteShoppingList(dataParam);
+    }
+
+    @Override
     public APIResult insertMyBag(Map<String, Object> dataParam) {
         APIResult result = new APIResult();
         sqlSession.getMapper(ProductMapper.class).insertMyBag(dataParam);

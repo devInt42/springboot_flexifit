@@ -19,6 +19,7 @@ public interface ProductService {
     APIResult insertWishList(Map<String, Object> dataParam);
     APIResult getWishList(Map<String, Object> dataParam);
     int deleteWishList(Map<String, Object> dataParam);
+    int deleteShoppingList(Map<String, Object> dataParam);
     APIResult insertMyBag(Map<String, Object> dataParam);
     APIResult getShoppingList(Map<String, Object> dataParam);
 

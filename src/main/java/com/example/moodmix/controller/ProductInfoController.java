@@ -138,6 +138,14 @@ public class ProductInfoController {
         return productService.deleteWishList(dataParam);
     }
 
+    @PostMapping("/deleteShoppingList")
+    //중복 막기
+    public int deleteShoppingList(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        return productService.deleteShoppingList(dataParam);
+    }
+
     @PostMapping("/myBag/insert")
     //중복 막기
     public APIResult insertMyBag(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
