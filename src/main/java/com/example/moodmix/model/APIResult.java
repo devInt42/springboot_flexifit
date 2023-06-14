@@ -18,9 +18,11 @@ public class APIResult {
     private QnaService qnaService;
     private FaqService faqService;
     private OrderService orderService;
+    private ReviewService reviewService;
     private int resultCode;
     private String resultMsg;
     private Object resultData;
+
 
     public APIResult() {
     }
@@ -164,6 +166,14 @@ public class APIResult {
         APIResult result = new APIResult();
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
         result = orderService.insertInfo(dataParam);
+        return result;
+    }
+
+    @PostMapping("/getReviewByUser")
+    public APIResult getReviewByUser(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = reviewService.getReviewByUser(dataParam);
         return result;
     }
 }
