@@ -3,10 +3,7 @@ package com.example.moodmix.model;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.moodmix.service.FaqService;
-import com.example.moodmix.service.ProductService;
-import com.example.moodmix.service.QnaService;
-import com.example.moodmix.service.UserService;
+import com.example.moodmix.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +17,7 @@ public class APIResult {
     private UserService userService;
     private QnaService qnaService;
     private FaqService faqService;
-
+    private OrderService orderService;
     private int resultCode;
     private String resultMsg;
     private Object resultData;
@@ -162,4 +159,11 @@ public class APIResult {
         return result;
     }
 
+    @PostMapping("/InsertOrderInfo")
+    public APIResult InsertOrderInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = orderService.insertInfo(dataParam);
+        return result;
+    }
 }

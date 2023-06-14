@@ -114,7 +114,7 @@
     </select>
 
     <select id="getCountByShop" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-        SELECT COUNT(*)
+        SELECT SUM(cloth_totalCount)
         FROM shoppingcart
         WHERE user_seq = #{userSeq}
     </select>

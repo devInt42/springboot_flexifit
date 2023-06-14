@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.moodmix.mapper.OrderMapper">
+
+    <insert id="insertInfo" parameterType="hashMap">
+        INSERT INTO order_complete (order_name, order_phone, delivery_type, recipient_name, recipient_phone1, recipient_phone2, postcode, address, deliver_memo, total_price, total_count, user_seq, address_detail)
+        VALUES (#{orderPersonName}, #{orderedPhone}, #{deliveryType}, #{recipientName}, #{recipientPhone1}, #{recipientPhone2}, #{postcode}, #{address}, #{deliveredMemo}, #{totalPrice}, #{totalCount}, #{userSeq}, #{detailAddress} );
+    </insert>
+
+</mapper>
