@@ -4,7 +4,7 @@
 <mapper namespace="com.example.moodmix.mapper.OrderMapper">
 
     <insert id="insertInfo" parameterType="hashMap">
-        INSERT INTO order_complete (order_name, order_phone, delivery_type, recipient_name, recipient_phone1, recipient_phone2, postcode, address, deliver_memo, total_price, total_count, user_seq, address_detail)
+        INSERT INTO order_info (order_name, order_phone, delivery_type, recipient_name, recipient_phone1, recipient_phone2, postcode, address, deliver_memo, total_price, total_count, user_seq, address_detail)
         VALUES (#{orderPersonName}, #{orderedPhone}, #{deliveryType}, #{recipientName}, #{recipientPhone1}, #{recipientPhone2}, #{postcode}, #{address}, #{deliveredMemo}, #{totalPrice}, #{totalCount}, #{userSeq}, #{detailAddress} );
     </insert>
 
