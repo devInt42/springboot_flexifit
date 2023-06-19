@@ -22,4 +22,19 @@ public class ReviewServiceImpl implements  ReviewService{
         result.setResultData(ReviewList);
         return result;
     }
+
+    @Override
+    public APIResult getReviewById(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        List<Map<String, Object>> ReviewList = sqlSession.getMapper(ReviewMapper.class).getReviewById(dataParam);
+        result.setResultData(ReviewList);
+        return result;
+    }
+
+    @Override
+    public APIResult insertInfo(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        sqlSession.getMapper(ReviewMapper.class).insertInfo(dataParam);
+        return result;
+    }
 }

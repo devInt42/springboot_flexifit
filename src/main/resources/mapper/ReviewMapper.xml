@@ -25,5 +25,31 @@
         oi.user_seq = #{userSeq}
     </select>
 
+    <select id="getReviewById" parameterType="hashMap" resultType="hashMap">
+        SELECT
+        sc.custom_frontImageUrl,
+        sc.custom_backImageUrl,
+        sc.cloth_size,
+        sc.cloth_color,
+        sc.cloth_date,
+        cl.cloth_name,
+        sc.cloth_totalCount,
+        cl.cloth_id,
+        cl.cloth_discount,
+        cl.cloth_defaultImage
+        FROM
+        order_info oi
+        JOIN
+        shoppingcart sc ON oi.user_seq = sc.user_seq
+        JOIN
+        clothes cl ON sc.cloth_id = cl.cloth_id
+        WHERE
+        oi.user_seq = #{userSeq}
+        AND sc.cloth_id = #{reviewId};
+    </select>
 
+    <insert id="insertInfo" parameterType="hashMap">
+        INSERT INTO review (user_seq,cloth_id,review_star,review_text,review_size)
+        VALUES (#{userSeq},#{reviewId},#{selectedRating},#{selectedSize},#{userReview});
+    </insert>
 </mapper>

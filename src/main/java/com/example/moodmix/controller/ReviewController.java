@@ -33,4 +33,32 @@ public class ReviewController {
         return result;
 
     }
+
+    @PostMapping("/reviewById")
+    public APIResult getReviewById(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        APIResult res = reviewService.getReviewById(dataParam);
+
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+        result.setResultData(resData);
+
+        return result;
+
+    }
+    @PostMapping("/insert")
+    public APIResult InsertReviewInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        APIResult res = reviewService.insertInfo(dataParam);
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+        result.setResultData(resData);
+
+        return result;
+
+    }
 }

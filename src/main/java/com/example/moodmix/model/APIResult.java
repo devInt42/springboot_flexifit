@@ -169,11 +169,27 @@ public class APIResult {
         return result;
     }
 
+    @PostMapping("/InsertReviewInfo")
+    public APIResult InsertReviewInfo(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = reviewService.insertInfo(dataParam);
+        return result;
+    }
+
     @PostMapping("/getReviewByUser")
     public APIResult getReviewByUser(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
         APIResult result = new APIResult();
         Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
         result = reviewService.getReviewByUser(dataParam);
+        return result;
+    }
+
+    @PostMapping("/getReviewById")
+    public APIResult getReviewById(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = reviewService.getReviewById(dataParam);
         return result;
     }
 }
