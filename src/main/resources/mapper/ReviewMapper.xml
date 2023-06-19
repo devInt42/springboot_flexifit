@@ -63,4 +63,16 @@
         SELECT COUNT(*)
         FROM review
     </select>
+
+    <select id="getAllList" parameterType="hashMap" resultType="hashMap">
+        SELECT
+        review.*,
+        users.user_name,
+        clothes.cloth_defaultImage
+        FROM review
+        JOIN users ON review.user_seq = users.user_seq
+        JOIN clothes ON review.cloth_id = clothes.cloth_id
+        LIMIT 5;
+    </select>
+
 </mapper>

@@ -1,9 +1,6 @@
 package com.example.moodmix.service;
 
-import com.example.moodmix.mapper.OrderMapper;
-import com.example.moodmix.mapper.ProductMapper;
-import com.example.moodmix.mapper.QnaMapper;
-import com.example.moodmix.mapper.ReviewMapper;
+import com.example.moodmix.mapper.*;
 import com.example.moodmix.model.APIResult;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,4 +48,11 @@ public class ReviewServiceImpl implements  ReviewService{
     public int getTotalCount() {
             return sqlSession.getMapper(ReviewMapper.class).getTotalCount();
     }
+
+    @Override
+    public List<Map<String, Object>> getAllList() {
+        ReviewMapper mapper = sqlSession.getMapper(ReviewMapper.class);
+        return mapper.getAllList();
+    }
+
 }

@@ -31,6 +31,7 @@ public class ReviewController {
 
     }
 
+
     @PostMapping("/reviewById")
     public APIResult getReviewById(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
         APIResult result = new APIResult();
@@ -43,8 +44,8 @@ public class ReviewController {
         result.setResultData(resData);
 
         return result;
-
     }
+
     @PostMapping("/insert")
     public APIResult InsertReviewInfo(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
         APIResult result = new APIResult();
@@ -79,6 +80,11 @@ public class ReviewController {
         int count;
         count = reviewService.getTotalCount();
         return count;
+    }
+
+    @GetMapping("/getAllReview")
+    public List<Map<String, Object>> getAllList() {
+        return reviewService.getAllList();
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.moodmix.service;
 
 import com.example.moodmix.model.APIResult;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ReviewService {
@@ -10,4 +11,6 @@ public interface ReviewService {
     APIResult insertInfo(Map<String, Object> dataParam);
     APIResult checkExistingReview(Map<String, Object> dataParam);
     int getTotalCount();
+    List<Map<String, Object>> getAllList();
+
 }
