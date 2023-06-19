@@ -2,6 +2,7 @@ package com.example.moodmix.service;
 
 import com.example.moodmix.mapper.OrderMapper;
 import com.example.moodmix.mapper.ProductMapper;
+import com.example.moodmix.mapper.QnaMapper;
 import com.example.moodmix.mapper.ReviewMapper;
 import com.example.moodmix.model.APIResult;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -44,5 +45,10 @@ public class ReviewServiceImpl implements  ReviewService{
         List<Map<String, Object>> checkExistingReview = sqlSession.getMapper(ReviewMapper.class).checkExistingReview(dataParam);
         result.setResultData(checkExistingReview);
         return result;
+    }
+
+    @Override
+    public int getTotalCount() {
+            return sqlSession.getMapper(ReviewMapper.class).getTotalCount();
     }
 }

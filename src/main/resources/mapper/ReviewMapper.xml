@@ -59,4 +59,8 @@
         AND cloth_id = #{reviewId}
     </select>
 
+    <select id="getTotalCount" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM review
+    </select>
 </mapper>
