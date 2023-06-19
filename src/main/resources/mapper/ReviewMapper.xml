@@ -50,6 +50,13 @@
 
     <insert id="insertInfo" parameterType="hashMap">
         INSERT INTO review (user_seq,cloth_id,review_star,review_text,review_size)
-        VALUES (#{userSeq},#{reviewId},#{selectedRating},#{selectedSize},#{userReview});
+        VALUES (#{userSeq},#{reviewId},#{selectedRating},#{userReview},#{selectedSize});
     </insert>
+
+    <select id="checkExistingReview" parameterType="hashMap" resultType="hashMap">
+        SELECT * FROM review
+        WHERE user_seq = #{userSeq}
+        AND cloth_id = #{reviewId}
+    </select>
+
 </mapper>

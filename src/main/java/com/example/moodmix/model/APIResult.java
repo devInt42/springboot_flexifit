@@ -192,4 +192,12 @@ public class APIResult {
         result = reviewService.getReviewById(dataParam);
         return result;
     }
+
+    @PostMapping("/checkExistingReview")
+    public APIResult checkExistingReview(@RequestBody Map<String, Object> param, HttpServletRequest servletRequest, HttpServletResponse servletResponse) {
+        APIResult result = new APIResult();
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+        result = reviewService.checkExistingReview(dataParam);
+        return result;
+    }
 }

@@ -61,4 +61,19 @@ public class ReviewController {
         return result;
 
     }
+
+    @PostMapping("/checkExistingReview")
+    public APIResult checkExistingReview(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
+        APIResult result = new APIResult();
+
+        Map<String, Object> dataParam = (Map<String, Object>) param.get("data");
+
+        APIResult res = reviewService.checkExistingReview(dataParam);
+
+        List<Map<String, Object>> resData = (List<Map<String, Object>>) res.getResultData();
+        result.setResultData(resData);
+
+        return result;
+
+    }
 }

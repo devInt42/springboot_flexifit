@@ -8,5 +8,6 @@ public interface ReviewService {
     APIResult getReviewByUser(Map<String, Object> dataParam);
     APIResult getReviewById(Map<String, Object> dataParam);
     APIResult insertInfo(Map<String, Object> dataParam);
+    APIResult checkExistingReview(Map<String, Object> dataParam);
 
 }

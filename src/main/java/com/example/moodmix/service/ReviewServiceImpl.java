@@ -37,4 +37,12 @@ public class ReviewServiceImpl implements  ReviewService{
         sqlSession.getMapper(ReviewMapper.class).insertInfo(dataParam);
         return result;
     }
+
+    @Override
+    public APIResult checkExistingReview(Map<String, Object> dataParam) {
+        APIResult result = new APIResult();
+        List<Map<String, Object>> checkExistingReview = sqlSession.getMapper(ReviewMapper.class).checkExistingReview(dataParam);
+        result.setResultData(checkExistingReview);
+        return result;
+    }
 }
