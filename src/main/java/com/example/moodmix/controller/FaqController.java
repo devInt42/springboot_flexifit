@@ -3,7 +3,6 @@ package com.example.moodmix.controller;
 
 import com.example.moodmix.model.APIResult;
 import com.example.moodmix.service.FaqService;
-import com.example.moodmix.service.QnaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

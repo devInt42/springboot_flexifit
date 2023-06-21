@@ -1,7 +1,6 @@
 package com.example.moodmix.service;
 
 import com.example.moodmix.mapper.QnaMapper;
-import com.example.moodmix.mapper.UserMapper;
 import com.example.moodmix.model.APIResult;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

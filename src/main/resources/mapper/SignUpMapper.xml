@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.moodmix.mapper.SignUpMapper">
 
-<!--    중복체크 있으면 0 / 없으면 1-->
+<!--중복체크-->
     <insert id="SignUp" parameterType="map">
         INSERT INTO users(user_id, user_password, user_name, user_birth)
         SELECT
