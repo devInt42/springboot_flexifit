@@ -55,4 +55,10 @@ public class ReviewServiceImpl implements  ReviewService{
         return mapper.getAllList();
     }
 
+    @Override
+    public List<Map<String, Object>> allReview() {
+        ReviewMapper mapper = sqlSession.getMapper(ReviewMapper.class);
+        return mapper.allReview();
+    }
+
 }

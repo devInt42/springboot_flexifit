@@ -10,4 +10,5 @@ public interface ReviewMapper {
     List<Map<String, Object>> checkExistingReview(Map<String, Object> dataParam);
     int getTotalCount();
     List<Map<String, Object>> getAllList();
+    List<Map<String, Object>> allReview();
 }

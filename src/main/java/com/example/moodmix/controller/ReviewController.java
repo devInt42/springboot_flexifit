@@ -16,6 +16,7 @@ import java.util.Map;
 public class ReviewController {
     @Autowired
     private ReviewService reviewService;
+
     @PostMapping("/listByUser")
     public APIResult getReviewByUser(@RequestBody Map<String, Object> param, HttpServletRequest request, HttpServletResponse response) {
         APIResult result = new APIResult();
@@ -85,6 +86,11 @@ public class ReviewController {
     @GetMapping("/getAllReview")
     public List<Map<String, Object>> getAllList() {
         return reviewService.getAllList();
+    }
+
+    @GetMapping("/allReview")
+    public List<Map<String, Object>> allReview() {
+        return reviewService.allReview();
     }
 
 }
