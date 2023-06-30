@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.moodmix.mapper.QnaMapper">
+
+
+    <select id="getAllList" parameterType="hashMap" resultType="hashMap">
+        SELECT q.*, u.user_name
+        FROM qna q
+        INNER JOIN users u ON q.user_seq = u.user_seq
+        WHERE q.qna_id BETWEEN #{startPage} AND #{endPage}
+    </select>
+
+    <select id="getTotalCount" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM qna
+    </select>
+
+    <select id="getcheckPwd" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM qna
+        WHERE qna_id = #{qnaId}
+        AND qna_password = #{qnaPassword}
+    </select>
+
+    <update id="updateInfo" parameterType="hashMap">
+        UPDATE qna
+        SET qna_title = #{title},
+        qna_content = #{content}
+        WHERE qna_id = #{qnaId}
+    </update>
+
+    <delete id="deleteQna" parameterType="hashMap">
+        DELETE FROM qna
+        WHERE qna_id = #{qnaId}
+    </delete>
+
+    <insert id="insertImageUrl" parameterType="hashMap">
+        INSERT INTO qna (qna_title, qna_content, qna_imageUrl, qna_date, user_seq, qna_password)
+        VALUES (#{title}, #{content}, #{imageUrl}, CURDATE(),#{userSeq},#{userPassword});
+    </insert>
+
+    <update id="updateQna" parameterType="hashMap">
+        UPDATE qna
+        SET qna_title = #{title},
+        qna_content = #{content},
+        qna_imageUrl = #{imageUrl}
+        WHERE qna_id = #{qnaId}
+    </update>
+
+    <insert id="insertReply" parameterType="hashMap">
+        INSERT INTO reply (reply_content, qna_id)
+        VALUES (#{reply}, #{qnaId})
+    </insert>
+
+    <select id="getReplyList" parameterType="hashMap" resultType="hashMap">
+        SELECT * from reply
+    </select>
+
+    <update id="updateReply" parameterType="hashMap">
+        UPDATE reply
+        SET reply_content = #{reply}
+        WHERE qna_id = #{qnaId}
+    </update>
+</mapper>

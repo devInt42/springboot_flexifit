@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.moodmix.mapper.ReviewMapper">
+
+    <select id="getReviewByUser" parameterType="hashMap" resultType="hashMap">
+        SELECT
+        sc.custom_frontImageUrl,
+        sc.custom_backImageUrl,
+        sc.cloth_size,
+        sc.cloth_color,
+        sc.cloth_date,
+        cl.cloth_name,
+        sc.cloth_totalCount,
+        cl.cloth_id,
+        cl.cloth_discount,
+        cl.cloth_defaultImage
+        FROM
+        order_info oi
+        JOIN
+        shoppingcart sc ON oi.user_seq = sc.user_seq
+        JOIN
+        clothes cl ON sc.cloth_id = cl.cloth_id
+        WHERE
+        oi.user_seq = #{userSeq}
+    </select>
+
+    <select id="getReviewById" parameterType="hashMap" resultType="hashMap">
+        SELECT
+        sc.custom_frontImageUrl,
+        sc.custom_backImageUrl,
+        sc.cloth_size,
+        sc.cloth_color,
+        sc.cloth_date,
+        cl.cloth_name,
+        sc.cloth_totalCount,
+        cl.cloth_id,
+        cl.cloth_discount,
+        cl.cloth_defaultImage
+        FROM
+        order_info oi
+        JOIN
+        shoppingcart sc ON oi.user_seq = sc.user_seq
+        JOIN
+        clothes cl ON sc.cloth_id = cl.cloth_id
+        WHERE
+        oi.user_seq = #{userSeq}
+        AND sc.cloth_id = #{reviewId};
+    </select>
+
+    <insert id="insertInfo" parameterType="hashMap">
+        INSERT INTO review (user_seq,cloth_id,review_star,review_text,review_size)
+        VALUES (#{userSeq},#{reviewId},#{selectedRating},#{userReview},#{selectedSize});
+    </insert>
+
+    <select id="checkExistingReview" parameterType="hashMap" resultType="hashMap">
+        SELECT * FROM review
+        WHERE user_seq = #{userSeq}
+        AND cloth_id = #{reviewId}
+    </select>
+
+    <select id="getTotalCount" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM review
+    </select>
+
+    <select id="getAllList" parameterType="hashMap" resultType="hashMap">
+        SELECT
+        review.*,
+        users.user_name,
+        clothes.cloth_defaultImage
+        FROM review
+        JOIN users ON review.user_seq = users.user_seq
+        JOIN clothes ON review.cloth_id = clothes.cloth_id
+        LIMIT 5;
+    </select>
+
+    <select id="allReview" parameterType="hashMap" resultType="hashMap">
+        SELECT
+        review.*,
+        users.user_name,
+        clothes.cloth_defaultImage
+        FROM review
+        JOIN users ON review.user_seq = users.user_seq
+        JOIN clothes ON review.cloth_id = clothes.cloth_id
+    </select>
+
+</mapper>

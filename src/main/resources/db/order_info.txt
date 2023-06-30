@@ -1,0 +1,19 @@
+CREATE TABLE `order_info` (
+  `order_seq` int(11) NOT NULL AUTO_INCREMENT,
+  `order_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `order_phone` int(11) NOT NULL DEFAULT 0,
+  `delivery_type` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recipient_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `recipient_phone1` int(11) NOT NULL DEFAULT 0,
+  `recipient_phone2` int(11) DEFAULT NULL,
+  `postcode` int(11) NOT NULL DEFAULT 0,
+  `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deliver_memo` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total_price` int(11) NOT NULL DEFAULT 0,
+  `total_count` int(11) NOT NULL,
+  `user_seq` int(11) NOT NULL,
+  `address_detail` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`order_seq`),
+  KEY `user_seq` (`user_seq`),
+  CONSTRAINT `order_info_ibfk_1` FOREIGN KEY (`user_seq`) REFERENCES `users` (`user_seq`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin

@@ -1,0 +1,6 @@
+CREATE TABLE reply (
+  reply_id INT AUTO_INCREMENT PRIMARY KEY,
+  reply_content VARCHAR(255),
+  qna_id INT,
+  FOREIGN KEY (qna_id) REFERENCES qna(qna_id)
+);

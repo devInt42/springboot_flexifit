@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.moodmix.mapper.FaqMapper">
+
+
+    <select id="getAllList" parameterType="hashMap" resultType="hashMap">
+        SELECT faq_id, faq_title, faq_content FROM faq;
+    </select>
+
+    <update id="updateInfo" parameterType="hashMap">
+        UPDATE faq
+        SET faq_title = #{faqTitle},
+        faq_content = #{faqContent}
+        WHERE faq_id = #{selectedId}
+    </update>
+
+    <delete id="deleteFaq" parameterType="hashMap">
+        DELETE FROM Faq
+        WHERE faq_id = #{selectedId}
+    </delete>
+
+    <insert id="insertInfo" parameterType="hashMap">
+        INSERT INTO faq (faq_title, faq_content)
+        VALUES (#{title}, #{content});
+    </insert>
+
+</mapper>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.moodmix.mapper.ProductMapper">
+
+    <select id="getAllProducts" parameterType="hashMap" resultType="hashMap">
+        SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
+        FROM clothes
+        <choose>
+            <when test="option == 1">
+            </when>
+            <when test="option == 2">
+                ORDER BY cloth_price ASC
+            </when>
+            <when test="option == 3">
+                ORDER BY cloth_price DESC
+            </when>
+        </choose>
+    </select>
+
+    <select id="getCount" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM clothes
+        WHERE cloth_type = #{category}
+    </select>
+
+    <select id="getTotalCount" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM clothes
+    </select>
+
+    <!--가격순-->
+    <select id="getProductBySort" parameterType="hashMap" resultType="hashMap">
+        SELECT cloth_id, cloth_name, cloth_type, cloth_description, cloth_price, cloth_discount, cloth_size, cloth_defaultImage
+        FROM clothes
+        WHERE cloth_type = #{category}
+        <choose>
+            <when test="option == 1">
+            </when>
+            <when test="option == 2">
+                ORDER BY cloth_price ASC
+            </when>
+            <when test="option == 3">
+                ORDER BY cloth_price DESC
+            </when>
+        </choose>
+    </select>
+
+    <select id="getProductInfo" parameterType="hashMap" resultType="hashMap">
+        SELECT *
+        FROM clothes
+        JOIN clothes_image ON clothes.cloth_id = clothes_image.cloth_id
+        WHERE clothes.cloth_id = #{clothId} AND clothes_image.cloth_color = #{clothColor};
+    </select>
+
+    <select id="getColorList" parameterType="hashMap" resultType="hashMap">
+        SELECT DISTINCT cloth_color
+        FROM clothes_image WHERE cloth_id = #{clothId} ;
+    </select>
+
+    <select id="getSizeList" parameterType="hashMap" resultType="hashMap">
+        SELECT DISTINCT cloth_size
+        FROM clothes_image WHERE cloth_id = #{clothId} ;
+    </select>
+
+    <!--    중복체크 있으면 0 / 없으면 1-->
+    <insert id="SignUp" parameterType="map">
+        INSERT INTO users(user_id, user_password, user_name, user_birth)
+        SELECT
+        #{userId},
+        #{userPassword},
+        #{userName},
+        #{userBirth}
+        FROM dual
+        WHERE NOT EXISTS (
+        SELECT user_id
+        FROM users
+        WHERE user_id = #{userId}
+        )
+    </insert>
+
+    <insert id="insertWishList" parameterType="hashMap">
+        INSERT INTO wishlist (user_seq, cloth_id)
+        VALUES (#{userSeq}, #{clothId});
+    </insert>
+
+    <select id="getWishList" parameterType="hashMap" resultType="hashMap">
+        SELECT c.cloth_name, c.cloth_price, c.cloth_discount, c.cloth_defaultImage, c.cloth_id
+        FROM wishlist w
+        JOIN clothes c ON w.cloth_id = c.cloth_id
+        WHERE w.user_seq = #{userSeq};
+    </select>
+
+    <delete id="deleteWishList" parameterType="hashMap">
+        DELETE FROM wishlist
+        WHERE cloth_id = #{clothId}
+    </delete>
+
+    <delete id="deleteShoppingList" parameterType="hashMap">
+        DELETE FROM shoppingcart
+        WHERE cloth_id = #{clothId}
+    </delete>
+
+    <insert id="insertMyBag" parameterType="hashMap">
+        INSERT INTO shoppingcart (user_seq, cloth_id, cloth_color, cloth_size, cloth_totalCount, custom_frontImageUrl, custom_backImageUrl, cloth_date)
+        VALUES (#{userSeq}, #{clothId}, #{clothColor}, #{selectedSize}, #{totalCount}, #{mergedFrontImage}, #{mergedBackImage}, CURDATE())
+    </insert>
+
+    <select id="getShoppingList" parameterType="hashMap" resultType="hashMap">
+        SELECT sc.custom_frontImageUrl, sc.custom_backImageUrl,sc.cloth_id, sc.cloth_date, sc.cloth_size, sc.cloth_totalCount, sc.cloth_color, c.cloth_discount, c.cloth_name
+        FROM shoppingcart sc
+        JOIN clothes c ON sc.cloth_id = c.cloth_id
+        WHERE  sc.user_seq = #{userSeq}
+    </select>
+
+    <select id="getCountByShop" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT SUM(cloth_totalCount)
+        FROM shoppingcart
+        WHERE user_seq = #{userSeq}
+    </select>
+</mapper>

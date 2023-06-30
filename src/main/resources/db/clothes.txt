@@ -1,0 +1,9 @@
+CREATE TABLE `clothes` (
+  `cloth_id` int(11) NOT NULL AUTO_INCREMENT,
+  `cloth_name` varchar(255) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  `cloth_description` varchar(50) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  `cloth_price` int(20) NOT NULL,
+  `cloth_size` varchar(20) NOT NULL,
+  `cloth_type` varchar(20) CHARACTER SET utf16 COLLATE utf16_general_ci NOT NULL,
+  PRIMARY KEY (`cloth_id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin COMMENT='존재하는 옷 데이터'

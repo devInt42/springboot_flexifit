@@ -1,0 +1,13 @@
+CREATE TABLE `review` (
+  `review_seq` int(11) NOT NULL AUTO_INCREMENT,
+  `user_seq` int(11) NOT NULL,
+  `cloth_id` int(11) NOT NULL,
+  `review_star` int(11) NOT NULL DEFAULT 0,
+  `review_text` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `review_size` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`review_seq`),
+  KEY `user_seq` (`user_seq`),
+  KEY `cloth_id` (`cloth_id`),
+  CONSTRAINT `review_ibfk_1` FOREIGN KEY (`user_seq`) REFERENCES `users` (`user_seq`),
+  CONSTRAINT `review_ibfk_2` FOREIGN KEY (`cloth_id`) REFERENCES `shoppingcart` (`cloth_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=armscii8 COLLATE=armscii8_bin
